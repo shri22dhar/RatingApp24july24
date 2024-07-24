@@ -1,0 +1,85 @@
+<html>
+	<head>
+	  <title>Rating app</title>
+	<style>
+		*{font-size:50px;font-family:Cambria:}
+		body{background-color:azure;}
+	</style>
+	</head>
+	<body>
+	<center>
+	<h1>Rating App</h1>
+	<form onsubmit="find()">
+	<input type="number" placeholder="Enter rating between 1 to 5" id="rating" min="1",max="5" style=width:700px;/>
+	<br/><br/>
+	<input type="submit" value="M1" style=border-radius:2.5rem;/>
+	<input type="submit" value="M2" style=border-radius:2.5rem;/>
+	<input type="submit" value="M3" style=border-radius:2.5rem;/>
+	</form>	
+	<h2 id="msg"/>
+	<script>
+		function find()
+			{
+				event.preventDefault();
+				let rating=document.getElementById("rating");
+				let msg=document.getElementById("msg");
+				
+				if(rating.value==="")
+				{
+					alert("u did not enter rating");	
+					msg.innerHTML="";				
+					rating.focus();
+					return;
+
+				}
+				
+				let r=parseInt(rating.value);
+				if((r<1)||(r>5))
+				{
+					alert("rating should be between 1 to 5");
+					msg.innerHTML="";				
+					rating.focus();
+					return;
+				}
+				
+				let action =document.activeElement.value;
+				
+				if(action==="M1")
+				{
+					let ans="";
+					if(r===5)          ans="Excellent";
+					else if(r===4)	   ans="Excellent";
+					else if(r===3)	   ans="Ok";
+					else if(r===2)	   ans="Ok";
+					else if(r===1)	   ans="Poor";
+					msg.innerHTML="ans 1=" +ans;
+				}
+				else if(action==="M2")
+				{
+					let ans="";
+					if((r===5)||(r===4))    ans="Excellent";
+					else if((r===3)||(r===2)) ans="Ok";
+					else 			 ans="Poor";
+					msg.innerHTML="ans 2="+ans;
+				}
+				else if(action==="M3")
+				{
+					let ans="";
+					switch(r)
+					{
+						case 5: ans="Excellent";     break;
+						case 4: ans="Excellent";     break;
+						case 3: ans="Ok";     break;
+						case 2: ans="Ok";     break;
+						case 1: ans="Poor";     break;
+
+					}
+					msg.innerHTML="ans 3=" +ans;
+				}
+
+			}
+	</script>
+	</center>
+	</body>
+</html>
+	
